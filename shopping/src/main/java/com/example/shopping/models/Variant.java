@@ -1,5 +1,6 @@
 package com.example.shopping.models;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.mongodb.lang.Nullable;
@@ -15,6 +16,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Document
 public class Variant {
+
+  @Id
+  private String id;
 
   private String name;
 
