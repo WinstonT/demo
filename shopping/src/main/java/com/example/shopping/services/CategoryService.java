@@ -15,4 +15,8 @@ public class CategoryService {
   public Category findCategory(String name) {
     return categoryRepository.getCategoryByName(name);
   }
+
+  public Category addCategory(Category category) {
+    return categoryRepository.save(category);
+  }
 }

@@ -66,7 +66,7 @@ public class ProductService {
 
     Category category = categoryService.findCategory(product.getCategory().getName());
     if (category == null) {
-      return false;
+      categoryService.addCategory(product.getCategory());
     }
 
     return true;
