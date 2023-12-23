@@ -1,6 +1,5 @@
 package com.example.shopping.services;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -9,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.example.shopping.models.Category;
 import com.example.shopping.models.Product;
-import com.example.shopping.models.Variant;
 import com.example.shopping.repositories.ProductRepository;
 import com.example.shopping.utils.Util;
 
@@ -21,9 +19,6 @@ public class ProductService {
 
   @Autowired
   private CategoryService categoryService;
-
-  @Autowired
-  private VariantService variantService;
 
   public List<Product> findAllProducts() {
     return productRepository.findAll();
@@ -72,15 +67,6 @@ public class ProductService {
     Category category = categoryService.findCategory(product.getCategory().getName());
     if (category == null) {
       return false;
-    }
-
-    if (product.getVariants() == null) {
-      product.setVariants(new ArrayList<Variant>());
-    } else {
-      // TODO: create bulk save for variants
-      for (Variant variant : product.getVariants()) {
-        variantService.addVariant(variant, product.getImage());
-      }
     }
 
     return true;
